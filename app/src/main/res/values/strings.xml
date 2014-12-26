@@ -6,5 +6,6 @@
     <string name="max_temp">21°</string>
     <string name="min_temp">8°</string>
     <string name="today">Today, December 18</string>
+    <string name="refresh">Refresh</string>
 
 </resources>
