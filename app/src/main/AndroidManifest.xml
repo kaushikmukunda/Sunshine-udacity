@@ -2,14 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.udacity.kmukunda.sunshine" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.udacity.kmukunda.sunshine.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +18,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:theme="@style/Base.Theme.AppCompat"
+            android:label="@string/title_activity_detail" >
+        </activity>com.udacity.kmukunda.sunshine
+        <activity
+            android:name=".SettingsActivity"
+            android:theme="@style/Base.Theme.AppCompat"
+            android:label="@string/title_activity_settings" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        
+        <provider
+            android:authorities="com.udacity.kmukunda.sunshine"
+            android:name=".data.WeatherProvider" />
     </application>
 
 </manifest>

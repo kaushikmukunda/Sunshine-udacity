@@ -2,6 +2,8 @@ package com.udacity.kmukunda.sunshine;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,9 +52,23 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
+        } else if (id == R.id.action_viewMap) {
+            openLocationOnMap();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openLocationOnMap() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String zipcode = Util.getLocationSetting(this);
+        Uri geoData = Uri.parse("geo:0,0?q=" + zipcode);
+        intent.setData(geoData);
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
     }
 }
